@@ -45,6 +45,8 @@ class Field
     if !player_scoring.nil?
       @home = player_scoring
     end
+
+    # push player onto the front of the bases with unshift
     new_base_positions.unshift player
 
     @bases = new_base_positions
