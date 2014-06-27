@@ -1,6 +1,7 @@
 guard_options = {
   cmd: "bundle exec rspec --color --format=doc",
   all_after_pass: false,
+  all_after_fail: false,
   all_on_start: false,
   failed_mode: :keep,
 }
