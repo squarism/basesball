@@ -12,7 +12,7 @@ class Umpire
   end
 
   def play_ball
-    self.pitcher.start_pitching
+    pitcher.start_pitching
   end
 
   def pitcher
@@ -23,28 +23,38 @@ class Umpire
     @field.advance(@field.batter)
   end
 
+  def ready_pitcher
+    self.pitcher.reset_pitching
+  end
+
+  def remove_batter
+    @field.remove_player(@field.batter)
+  end
+
+  def check_strikes
+    if @count[:strikes] >= 3
+      remove_batter
+      reset_count
+    end
+  end
+
+  def check_balls
+    if @count[:balls] >= 4
+      @field.advance(@field.batter)
+      reset_count
+    end
+  end
+
   # strike, as in three strikes and you're out
   def saw_strike
     @count[:strikes] += 1
-
-    if @count[:strikes] >= 3
-      @field.remove_player(@field.batter)
-      reset_count
-    end
-
-    @count
+    check_strikes
   end
 
   # ball, as in four balls to a walk
   def saw_ball
     @count[:balls] += 1
-
-    if @count[:balls] >= 4
-      @field.advance(@field.batter)
-      reset_count
-    end
-
-    @count
+    check_balls
   end
 
 end

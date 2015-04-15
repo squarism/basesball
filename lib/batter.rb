@@ -4,7 +4,7 @@ class Batter
   def initialize(field)
     @field = field
     @on_base = false
-    @average = 0.333
+    @average = rand(0.125 .. 0.500)
   end
 
   def swing

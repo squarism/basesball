@@ -66,7 +66,7 @@ class Field
   end
 
   def ball_miss
-    @umpire.saw_ball_miss
+    @umpire.saw_ball
   end
 
 end

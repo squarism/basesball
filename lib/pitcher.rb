@@ -29,7 +29,6 @@ class Pitcher
       # hooks
       callbacks {
         on_after(:pitch) do |event|
-          puts "Pitcher: I just pitched."
           self.field.deliver_ball
         end
       }
@@ -39,6 +38,10 @@ class Pitcher
 
   def start_pitching
     pitching.pitch
+  end
+
+  def reset_pitching
+    pitching.reset
   end
 
 end

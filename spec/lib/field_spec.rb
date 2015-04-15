@@ -47,8 +47,8 @@ describe Field do
   end
 
   it "lets umpires know when a ball is missed" do
-    umpire.stub(:saw_ball_miss)
-    umpire.should_receive(:saw_ball_miss).once
+    umpire.stub(:saw_ball)
+    umpire.should_receive(:saw_ball).once
     subject.umpire = umpire
 
     subject.ball_miss
